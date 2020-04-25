@@ -13,40 +13,40 @@ for x in file:
 
 file.close()
 
-#Creates the left, middle, right variables
-firstNum = l[0]
-
-if len(l)%2==0:
-    middle = len(l)/2
-    middle -= 1
-else:
-    middle = (len(l)-1)/2
-
-middle = math.floor(middle)
-middleNum = l[middle]
-
-lastNum = l[len(l)-1]
-
 #Create the algorithm
 Running = True
 
 while Running == True:
-    print("Answer true or false.")
+    #Creates the left, middle, right variables
+    firstNum = l[0]
+
+    if len(l)%2==0:
+        middle = len(l)/2
+        middle -= 1
+    else:
+        middle = (len(l)-1)/2
+
+    middle = math.floor(middle)
+    middleNum = l[middle]
+
+    lastNum = l[len(l)-1]
+
+    #Start the algorithm
+    print("Answer yes or no.")
     option = input(f"Is the number higher than {middleNum}: ").lower()
 
-    if option == "true":
-        print("true")
-    elif option == "false":
-        print("false")
+    if option == "yes":
+        for x in range(middle+1):
+            l.pop(0)
+    elif option == "no":
+        for x in range(middle+1, len(l)):
+            l.pop()
     else:
-        print(f"\n\nERROR: Answer not \"true\" or \"false\". Please answer again.")
+        print(f"\n\nERROR: Answer not \"yes\" or \"no\". Please answer again.")
 
     print("\n\n")
 
-    
+    if len(l) == 1:
+        break
 
-
-
-print(firstNum)
-print(middleNum)
-print(lastNum)
+print(f"Your number was {l[0]}.")
